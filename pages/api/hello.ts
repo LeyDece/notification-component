@@ -1,10 +1,16 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import { NextApiRequest, NextApiResponse } from "next";
+import { NotificationProps } from "../../components/NotificationCard";
 import User from "../../types/User";
 
 
 const userList: User[] = [
+  {
+    firstname: "Jacob",
+    lastname: "Thompson",
+    profilePicture: "/assets/images/avatar-jacob-thompson.webp"
+  },
   {
     firstname: "Angela",
     lastname: "Gray",
@@ -14,11 +20,6 @@ const userList: User[] = [
     firstname: "Anna",
     lastname: "Kim",
     profilePicture: "/assets/images/avatar-anna-kim.webp"
-  },
-  {
-    firstname: "Jacob",
-    lastname: "Thompson",
-    profilePicture: "/assets/images/avatar-jacob-thompson.webp"
   },
   {
     firstname: "Kimberly",
@@ -42,6 +43,88 @@ const userList: User[] = [
   }
 ]
 
+const notifications: NotificationProps[] = [
+  {
+    isRead: false,
+    time: "1m",
+    notificationString: "reacted to your recent post ",
+    linkElement: "My first tournament today!",
+    user: {
+      firstname: "Mark",
+      lastname: "Webber",
+      profilePicture: "/assets/images/avatar-mark-webber.webp"
+    }
+  },
+  {
+    isRead: false,
+    time: "5m",
+    notificationString: "followed you ",
+    isLinkElemenGroup: true,
+    user: {
+      firstname: "Angela",
+      lastname: "Gray",
+      profilePicture: "/assets/images/avatar-angela-gray.webp"
+    }
+  },
+  {
+    isRead: false,
+    time: "1 day",
+    notificationString: "has joined your group ",
+    linkElement: "Chess Club",
+    isLinkElemenGroup: true,
+    user: {
+      firstname: "Jacob",
+      lastname: "Thompson",
+      profilePicture: "/assets/images/avatar-jacob-thompson.webp"
+    }
+  },
+  {
+    isRead: true,
+    time: "5 days",
+    notificationString: "reacted to your recent post ",
+    messagePreview: "Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and I'm already having lots of fun and improving my game.",
+    user: {
+      firstname: "Rizky",
+      lastname: "Hasanuddin",
+      profilePicture: "/assets/images/avatar-rizky-hasanuddin.webp"
+    }
+  },
+  {
+    isRead: true,
+    time: "1 week",
+    notificationString: "commented on your picture ",
+    picture: "/assets/images/image-chess.webp",
+    user: {
+      firstname: "Kimberly",
+      lastname: "Smith",
+      profilePicture: "/assets/images/avatar-kimberly-smith.webp"
+    }
+  },
+  {
+    isRead: true,
+    time: "2 weeks",
+    notificationString: "reacted to your recent post ",
+    linkElement: "5 end-game strategies to increase your win rate",
+    user: {
+      firstname: "Nathan",
+      lastname: "Peterson",
+      profilePicture: "/assets/images/avatar-nathan-peterson.webp"
+    }
+  },
+  {
+    isRead: true,
+    time: "2 weeks",
+    notificationString: "left the group ",
+    linkElement: "Chess Club",
+    isLinkElemenGroup: true,
+    user: {
+      firstname: "Anna",
+      lastname: "Kim",
+      profilePicture: "/assets/images/avatar-anna-kim.webp"
+    }
+  },
+]
+
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  res.status(200).json(userList)
+  res.status(200).json(notifications)
 }
