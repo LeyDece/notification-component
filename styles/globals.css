@@ -18,9 +18,14 @@ li {
   list-style: none;
 }
 
-a {
+a,
+a:visited {
   color: inherit;
   text-decoration: none;
+}
+
+a:hover {
+  color: hsl(219, 85%, 26%);
 }
 
 * {

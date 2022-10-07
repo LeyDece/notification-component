@@ -43,7 +43,9 @@ const NotificationHeader: React.FC<NotificationHeaderProps> = ({
         Notifications
         <div className="notification-number">{notificationNumber}</div>
       </div>
-      <div className="notification-read">Mark all as read</div>
+      <div className="notification-read">
+        <a href="#">Mark all as read</a>
+      </div>
     </NotificationHeaderSC>
   );
 };

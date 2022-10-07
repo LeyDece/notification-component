@@ -33,6 +33,7 @@ const NotificationCardSC = styled.div<NotificationProps>`
 
   .container {
     display: flex;
+    position: relative;
   }
 
   .content-container {
@@ -60,6 +61,10 @@ const NotificationCardSC = styled.div<NotificationProps>`
       props.isLinkElemenGroup ? "hsl(219, 85%, 26%)" : "hsl(219, 12%, 42%)"};
   }
 
+  .link-element:hover {
+    color: hsl(219, 85%, 26%);
+  }
+
   .time {
     margin-top: "5px";
     color: hsl(219, 14%, 63%);
@@ -73,8 +78,17 @@ const NotificationCardSC = styled.div<NotificationProps>`
     margin: 15px 0;
   }
 
+  .message-preview:hover {
+    background-color: hsl(211, 68%, 94%);
+    cursor: pointer;
+  }
+
+  .message-preview a:hover {
+    color: inherit;
+  }
+
   .picture {
-    float: right;
+    margin-left: auto;
   }
 `;
 
@@ -105,25 +119,35 @@ const NotificationCard: React.FC<NotificationProps> = ({
 
         <div className="content-container">
           <div className={`${isRead ? "" : "isNotRead"} content`}>
-            <span className="name">
-              {`${user.firstname} ${user.lastname}`}{" "}
-            </span>
+            <a href="#">
+              <span className="name">
+                {`${user.firstname} ${user.lastname}`}{" "}
+              </span>
+            </a>
             <span className="notification-content">{notificationString}</span>
-            {linkElement && <span className="link-element">{linkElement}</span>}
+            {linkElement && (
+              <a href="#">
+                <span className="link-element">{linkElement}</span>
+              </a>
+            )}
           </div>
           <div className="time">{time} ago</div>
           {messagePreview && (
-            <div className="message-preview">{messagePreview}</div>
+            <div className="message-preview">
+              <a href="#">{messagePreview}</a>
+            </div>
           )}
         </div>
         {picture && (
           <div className="picture">
-            <Image
-              src="/assets/images/image-chess.webp"
-              height={40}
-              width={40}
-              layout="fixed"
-            />
+            <a href="#">
+              <Image
+                src="/assets/images/image-chess.webp"
+                height={40}
+                width={40}
+                layout="fixed"
+              />
+            </a>
           </div>
         )}
       </div>
